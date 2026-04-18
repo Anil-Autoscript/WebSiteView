@@ -3,12 +3,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="28" />
-    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -23,17 +20,23 @@
         android:hardwareAccelerated="true"
         android:largeHeap="true">
 
-        <!-- Splash / Launcher Activity -->
+        <!-- Home launcher (icon grid) -->
         <activity
-            android:name=".SplashActivity"
+            android:name=".HomeActivity"
             android:exported="true"
-            android:theme="@style/Theme.Splash"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Splash Activity -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Splash"
+            android:screenOrientation="portrait" />
 
         <!-- Main WebView Activity -->
         <activity
@@ -43,19 +46,18 @@
             android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait" />
 
-        <!-- URL Manager Activity -->
+        <!-- URL Manager (legacy kept for compatibility) -->
         <activity
             android:name=".UrlManagerActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".HomeActivity" />
 
-        <!-- Settings Activity -->
+        <!-- Settings -->
         <activity
             android:name=".SettingsActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".HomeActivity" />
 
-        <!-- File Provider for downloads -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -67,5 +69,4 @@
         </provider>
 
     </application>
-
 </manifest>
