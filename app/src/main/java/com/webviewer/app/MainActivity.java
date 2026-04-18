@@ -68,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Load URL from intent or saved preference
         String urlToLoad = getIntent().getStringExtra("url");
+        String htmlContent = getIntent().getStringExtra("html_content");
+        if (htmlContent != null && !htmlContent.isEmpty()) {
+            webView.loadData(htmlContent, "text/html; charset=UTF-8", "UTF-8");
+            urlEditText.setText("Local HTML page");
+            return;
+        }
         if (urlToLoad == null || urlToLoad.isEmpty()) {
             urlToLoad = prefs.getString(PREF_CURRENT_URL, DEFAULT_URL);
         }
