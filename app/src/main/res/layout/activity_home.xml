@@ -52,7 +52,7 @@
                     android:layout_marginStart="8dp"
                     android:background="@null"
                     android:hint="Search your pages..."
-                    android:hintTextColor="@color/text_secondary"
+                    android:textColorHint="@color/text_secondary"
                     android:imeOptions="actionSearch"
                     android:inputType="text"
                     android:maxLines="1"
